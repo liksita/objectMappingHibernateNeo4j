@@ -2,25 +2,30 @@ package com.haw_hamburg.de.objectMapping.hibernate.entities;
 
 import java.util.Date;
 
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
 import javax.persistence.ManyToOne;
+import javax.persistence.InheritanceType;
 
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-public class Activity {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "TYPE")
+public abstract class Activity {
 	
 	@Id
 	@GeneratedValue(generator = "uuid")
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
-	private String id;
+	String id;
 
-	private Date date;
+	Date date;
 
 	@ManyToOne
-	private User author;
+	User author;
 
 	// constructors, getters and setters...
 
@@ -28,28 +33,16 @@ public class Activity {
 		this.date = date;
 	}
 
-	public String getId() {
-		return id;
-	}
+	public abstract String getId();
 
-	public void setId(String id) {
-		this.id = id;
-	}
+	public abstract void setId(String id);
 
-	public Date getDate() {
-		return date;
-	}
+	public abstract Date getDate();
 
-	public void setDate(Date date) {
-		this.date = date;
-	}
+	public abstract void setDate(Date date);
 
-	public User getAuthor() {
-		return author;
-	}
+	public abstract User getAuthor();
 
-	public void setAuthor(User author) {
-		this.author = author;
-	}
+	public abstract void setAuthor(User author);
 
 }

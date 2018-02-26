@@ -27,8 +27,16 @@ public class FrameworkTest {
 	private DBCollection collection_user = null;
 
 	// Collection
-	private String collection_post_name = "Activity";
+	private String collection_post_name = "Post";
 	private DBCollection collection_post = null;
+	
+	// Collection
+	private String collection_comment_name = "Comment";
+	private DBCollection collection_comment = null;
+	
+	// Collection
+	private String collection_activity_name = "Activity";
+	private DBCollection collection_activity = null;
 
 	// Collection
 	private String collection_discussion_name = "Discussion";
@@ -104,8 +112,8 @@ public class FrameworkTest {
 
 		}
 
-		// Delete Test Environment
-		deleteTestEnvironment();
+//		 Delete Test Environment
+//		deleteTestEnvironment();
 
 		// Print Result
 		return this.result;
@@ -129,9 +137,13 @@ public class FrameworkTest {
 		// Create and Connect to Collection
 		this.db.createCollection(this.collection_user_name, null);
 		this.db.createCollection(this.collection_post_name, null);
+		this.db.createCollection(this.collection_comment_name, null);
+		this.db.createCollection(this.collection_activity_name, null);
 		this.db.createCollection(this.collection_discussion_name, null);
 		this.collection_user = this.db.getCollection(this.collection_user_name);
 		this.collection_post = this.db.getCollection(this.collection_post_name);
+		this.collection_comment = this.db.getCollection(this.collection_comment_name);
+		this.collection_activity = this.db.getCollection(this.collection_activity_name);
 		this.collection_discussion = this.db.getCollection(this.collection_discussion_name);
 	}
 
@@ -140,6 +152,8 @@ public class FrameworkTest {
 		// Delete Connection
 		this.db.getCollection(this.collection_user_name).drop();
 		this.db.getCollection(this.collection_post_name).drop();
+		this.db.getCollection(this.collection_comment_name).drop();
+		this.db.getCollection(this.collection_activity_name).drop();
 		this.db.getCollection(this.collection_discussion_name).drop();
 		this.mh.closeConnection();
 
@@ -158,7 +172,9 @@ public class FrameworkTest {
 
 	private void printCount() {
 		System.out.println("Count users " + this.collection_user.find().count());
-		System.out.println("Count activities " + this.collection_post.find().count());
+		System.out.println("Count posts " + this.collection_post.find().count());
+		System.out.println("Count comments " + this.collection_comment.find().count());
+		System.out.println("Count activities " + this.collection_activity.find().count());
 		System.out.println("Count discussions " + this.collection_discussion.find().count());
 	}
 

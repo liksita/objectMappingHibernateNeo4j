@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import com.haw_hamburg.de.objectMapping.hibernate.entities.Activity;
 import com.haw_hamburg.de.objectMapping.hibernate.entities.Comment;
 import com.haw_hamburg.de.objectMapping.hibernate.entities.Discussion;
 import com.haw_hamburg.de.objectMapping.hibernate.entities.LoginData;
@@ -76,6 +77,12 @@ public class MongoHibernate {
 			
 			comment2.setAuthor(user1);
 			user1.getUserComments().add(comment2);
+			
+			comment1.setPost(post1);
+			post1.getUserComments().add(comment1);
+			
+			comment2.setPost(post2);
+			post2.getUserComments().add(comment2);
 
 			post2.setAuthor(user1);
 			user1.getUserPosts().add(post2);
