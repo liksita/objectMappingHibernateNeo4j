@@ -1,7 +1,5 @@
 package com.haw_hamburg.de.objectMapping.hibernateNeo4j.entities;
 
-
-
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -15,18 +13,21 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 public class Discussion {
-	
+
 	@Id
 	@GeneratedValue(generator = "uuid")
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
 	private String id;
 
 	private String topic;
-	
-	@ManyToMany(targetEntity = User.class, cascade = CascadeType.PERSIST, 
-			fetch = FetchType.LAZY)
+
+	@ManyToMany(targetEntity = User.class, cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
 	private List<User> users;
-	
+
+	Discussion() {
+
+	}
+
 	public Discussion(String topic) {
 		this.topic = topic;
 	}

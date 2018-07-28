@@ -4,8 +4,6 @@ import java.util.Date;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -14,6 +12,10 @@ public class Comment extends Activity {
 
 	@ManyToOne
 	private Post post;
+
+	Comment() {
+
+	}
 
 	public Comment(Date date) {
 		super(date);
@@ -50,7 +52,7 @@ public class Comment extends Activity {
 	public void setAuthor(User author) {
 		this.author = author;
 	}
-	
+
 	public String getTitle() {
 		return title;
 	}

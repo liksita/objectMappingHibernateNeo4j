@@ -5,16 +5,12 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
-import javax.persistence.ElementCollection;
-import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.OrderColumn;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -29,6 +25,7 @@ public class User {
 	private String firstName;
 	private String lastName;
 
+	@Embedded
 	private LoginData loginData;
 
 	@OneToMany(mappedBy = "author", cascade = CascadeType.PERSIST)

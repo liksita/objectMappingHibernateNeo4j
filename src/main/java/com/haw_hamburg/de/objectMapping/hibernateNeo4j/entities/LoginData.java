@@ -3,17 +3,14 @@ package com.haw_hamburg.de.objectMapping.hibernateNeo4j.entities;
 import javax.persistence.Embeddable;
 import javax.persistence.OneToOne;
 
-
-
 @Embeddable
 public class LoginData {
-	
+
 	private String id;
 
 	private String username;
 	private String password;
 
-	
 	@OneToOne
 	private User user;
 
@@ -50,7 +47,7 @@ public class LoginData {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	public User getUser() {
 		return user;
 	}
