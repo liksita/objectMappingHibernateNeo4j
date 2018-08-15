@@ -7,6 +7,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
@@ -28,13 +29,13 @@ public class User {
 	@Embedded
 	private LoginData loginData;
 
-	@OneToMany(mappedBy = "author", cascade = CascadeType.PERSIST)
+	@OneToMany(mappedBy = "author", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	private Set<Post> userPosts = new HashSet<>();
 
-	@OneToMany(mappedBy = "author", cascade = CascadeType.PERSIST)
+	@OneToMany(mappedBy = "author", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	private Set<Comment> userComments = new HashSet<>();
 
-	@ManyToMany(targetEntity = Discussion.class, mappedBy = "users")
+	@ManyToMany(targetEntity = Discussion.class, mappedBy = "users", fetch = FetchType.EAGER)
 	private List<Discussion> discussions;
 
 	// constructors, getters and setters...

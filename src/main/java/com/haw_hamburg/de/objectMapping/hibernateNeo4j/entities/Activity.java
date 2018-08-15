@@ -3,6 +3,7 @@ package com.haw_hamburg.de.objectMapping.hibernateNeo4j.entities;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
@@ -25,7 +26,7 @@ public abstract class Activity {
 
 	Date date;
 
-	@ManyToOne
+	@ManyToOne (fetch = FetchType.EAGER)
 	User author;
 
 	// constructors, getters and setters...

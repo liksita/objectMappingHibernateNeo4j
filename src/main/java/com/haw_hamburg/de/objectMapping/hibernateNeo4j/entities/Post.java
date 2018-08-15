@@ -7,13 +7,14 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 
 @Entity
 @DiscriminatorValue(value = "B")
 public class Post extends Activity {
 
-	@OneToMany(mappedBy = "post", cascade = CascadeType.PERSIST)
+	@OneToMany(mappedBy = "post", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	private Set<Comment> userComments = new HashSet<>();
 
 	// constructors, getters and setters...

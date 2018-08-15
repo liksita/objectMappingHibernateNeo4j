@@ -4,13 +4,14 @@ import java.util.Date;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 
 @Entity
 @DiscriminatorValue(value = "A")
 public class Comment extends Activity {
 
-	@ManyToOne
+	@ManyToOne (fetch = FetchType.EAGER)
 	private Post post;
 
 	Comment() {

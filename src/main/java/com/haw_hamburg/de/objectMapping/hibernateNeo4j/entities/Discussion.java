@@ -21,7 +21,7 @@ public class Discussion {
 
 	private String topic;
 
-	@ManyToMany(targetEntity = User.class, cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+	@ManyToMany(targetEntity = User.class, cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	private List<User> users;
 
 	Discussion() {
